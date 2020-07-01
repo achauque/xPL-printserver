@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/achauque/xPL-printserver/master/public/imgs/logo.png" width="400"></p>
+
 # xPL-printserver
 
 This project is a print server for device with support xPL or compatible.
