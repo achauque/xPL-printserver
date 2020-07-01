@@ -9,6 +9,12 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+    
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -80,11 +86,11 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md" style="font-size:5vw;">
+                <div class="title m-b-md mb-0" style="font-size:8vw;">
                     <img class="img-fluid" src="imgs/logo.png" alt="logo"><br>
                     xPL-printserver
                 </div>
-
+                <button class="btn btn-sm btn-success mb-4">print test</button><br>
                 <div class="links">
                     <a href="https://github.com/achauque/xPL-printclient">xPL-printclient</a>
                     <a href="https://www.linkedin.com/in/esteban-alejandro-chauque-7a0a3b35/">LinkedIn</a>

@@ -33,9 +33,13 @@ class PrinterController extends Controller
     public function print(Request $request)
     {
         $jd =  json_decode($request->getContent());
-        //
-        $imp = file_get_contents('templateZPL/'.$jd->template);
+
+        $path_template = env('PATH_TEMPLATES', 'templates');
+
+        $imp = file_get_contents($path_template.'/'.$jd->template);
+
         $address = $jd->printer;
+
         if ($address == '0.0.0.0'){
             $address = $_SERVER['REMOTE_ADDR'];
         }
