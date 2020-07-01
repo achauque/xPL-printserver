@@ -80,14 +80,15 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md" style="font-size:5vw;">
+                    <img class="img-fluid" src="imgs/logo.png" alt="logo"><br>
                     xPL-printserver
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">xPL-printclient</a>
+                    <a href="https://github.com/achauque/xPL-printclient">xPL-printclient</a>
                     <a href="https://www.linkedin.com/in/esteban-alejandro-chauque-7a0a3b35/">LinkedIn</a>
-                    <a href="https://github.com/achauque/">GitHub</a>
+                    <a href="https://github.com/achauque?tab=repositories">GitHub</a>
                 </div>
             </div>
         </div>
