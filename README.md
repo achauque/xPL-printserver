@@ -32,13 +32,12 @@ Laravel development server started: http://127.0.0.1:8000
 
 ```js
 {
-    "template" : "template.zpl",
-    "printer" : "192.168.X.X",
+    "template" : "test.xpl",
+    "printer" : "0.0.0.0",
     "port" : 9100,
     "parms" : [
-        "1000.00 kg",
-        "200.00 m",
-        "250 mic"
+        "GUANACO",
+        "12345678"
     ]
 }
 ```
