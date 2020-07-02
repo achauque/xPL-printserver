@@ -27,3 +27,18 @@ user@guanaco:~/xPL-printserver$ php artisan serv
 Laravel development server started: http://127.0.0.1:8000
 
 ```
+
+# JSON Message
+
+```js
+{
+    "template" : "template.zpl",
+    "printer" : "192.168.X.X",
+    "port" : 9100,
+    "parms" : [
+        "1000.00 kg",
+        "200.00 m",
+        "250 mic"
+    ]
+}
+```
