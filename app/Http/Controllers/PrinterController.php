@@ -32,6 +32,7 @@ class PrinterController extends Controller
 
     public function print(Request $request)
     {
+
         $jd =  json_decode($request->getContent());
 
         $path_template = env('PATH_TEMPLATES', 'templates');
@@ -49,8 +50,8 @@ class PrinterController extends Controller
         $count = 0;
         
         foreach ($jd->parms as $value) {
-                $imp = str_replace("<##".$count.">", $value, $imp);
-                $count++;
+            $imp = str_replace("<##".$count.">", $value, $imp);
+            $count++;
         }
 
         try {

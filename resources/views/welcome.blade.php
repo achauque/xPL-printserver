@@ -94,7 +94,7 @@
                     <img class="img-fluid" src="imgs/logo.png" alt="logo"><br>
                     xPL-printserver
                 </div>
-                <button type="button" class="btn btn-sm btn-success mb-4"><i class="fas fa-print"></i> print test</button>
+                <button type="button" class="btn btn-sm btn-success mb-4" data-toggle="modal" data-target="#exampleModalLong2"><i class="fas fa-print"></i> print test</button>
                 <button type="button" class="btn btn-sm btn-success mb-4" data-toggle="modal" data-target="#exampleModalLong1"><i class="fas fa-upload"></i> upload template</button>
                 <button type="button" class="btn btn-sm btn-success mb-4" data-toggle="modal" data-target="#exampleModalLong"><i class="fas fa-list"></i> show templates</button><br>
                 <div class="links">
@@ -178,6 +178,32 @@
             </div>
         </div>
 
+        <!-- Modal Print Test Templates-->
+        <div class="modal fade" id="exampleModalLong2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle2" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle2">Print Test Template</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="control-group text-center" >
+                            <img class="img-fluid" src="imgs/test.png" alt="test">
+                            <input class="form-control" placeholder="IP ADDRESS">
+                            <input class="form-control" placeholder="PORT">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="print_test()">print</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="message" class="alert alert-success alert-dismissible fade show fixed-bottom w-25 p-3" role="alert" style="display:none;">
             <strong><i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Upload success</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -189,13 +215,54 @@
     <script>
         $( document ).ready(function() {
             console.log( "ready!" );
+
             @if (session('success'))
-            $('#message').show();
-            setTimeout(function() { 
-                $('#message').fadeOut(1000); 
-            }, 2000);
+                $('#message').show();
+                setTimeout(function() { 
+                    $('#message').fadeOut(1000); 
+                }, 2000);
             @endif
 
         });
+        function print_test(){
+            console.log( "send!" );
+
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+            var objHeader = {
+                'Authorization': 'Bearer ' + CSRF_TOKEN,
+                'X-CSRF-TOKEN': CSRF_TOKEN
+            };
+
+            var json_data = {
+                "template" : "test.xpl",
+                "printer" : "192.168.X.X",
+                "port" : 9100,
+                "parms" : [
+                    "GUANACO",
+                    "12345678"
+                    ]
+            };
+
+            $.ajax({
+                url: '/api/print',
+                type: 'POST',
+                data: JSON.stringify(json_data),
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
+                headers : objHeader,
+                success: function(response){
+                    console.log(response);
+                },
+                error: function(e){
+                    console.log('error');
+                }
+            });
+
+        }
     </script>
 </html>
