@@ -98,8 +98,8 @@
                 <button type="button" class="btn btn-sm btn-success mb-4" data-toggle="modal" data-target="#exampleModalLong1"><i class="fas fa-upload"></i> upload template</button>
                 <button type="button" class="btn btn-sm btn-success mb-4" data-toggle="modal" data-target="#exampleModalLong"><i class="fas fa-list"></i> show templates</button><br>
                 <div class="links">
-                    <a href="https://github.com/achauque/xPL-printclient"><i class="fab fa-github-square"></i>xPL-printclient</a>
-                    <a href="https://www.linkedin.com/in/esteban-alejandro-chauque-7a0a3b35/"><i class="fab fa-linkedin"></i>Profile</a>
+                    <a href="https://github.com/achauque/xPL-printclient" target="_blanck"><i class="fab fa-github-square"></i>xPL-printclient</a>
+                    <a href="https://www.linkedin.com/in/esteban-alejandro-chauque-7a0a3b35/" target="_blanck"><i class="fab fa-linkedin"></i>Profile</a>
                     <a href="https://github.com/achauque?tab=repositories"><i class="fab fa-github-square"></i>Projects</a>
                 </div>
             </div>
@@ -177,10 +177,25 @@
                 </div>
             </div>
         </div>
+
+        <div id="message" class="alert alert-success alert-dismissible fade show fixed-bottom w-25 p-3" role="alert" style="display:none;">
+            <strong><i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Upload success</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
     </body>
     <script>
         $( document ).ready(function() {
             console.log( "ready!" );
+            @if (session('success'))
+            $('#message').show();
+            setTimeout(function() { 
+                $('#message').fadeOut(1000); 
+            }, 2000);
+            @endif
+
         });
     </script>
 </html>
