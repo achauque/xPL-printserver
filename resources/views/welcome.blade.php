@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{ asset('css/fa/all.css') }}" rel="stylesheet"> <!--load all styles -->
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -90,7 +91,8 @@
                     <img class="img-fluid" src="imgs/logo.png" alt="logo"><br>
                     xPL-printserver
                 </div>
-                <button class="btn btn-sm btn-success mb-4">print test</button><br>
+                <button class="btn btn-sm btn-success mb-4"><i class="fas fa-print"></i> print test</button>
+                <button class="btn btn-sm btn-success mb-4"><i class="fas fa-upload"></i> upload template</button><br>
                 <div class="links">
                     <a href="https://github.com/achauque/xPL-printclient">xPL-printclient</a>
                     <a href="https://www.linkedin.com/in/esteban-alejandro-chauque-7a0a3b35/">LinkedIn</a>
