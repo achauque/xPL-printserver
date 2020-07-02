@@ -24,6 +24,5 @@ user@guanaco:~/xPL-printserver$ php artisan key:generate
 ```console
 
 user@guanaco:~/xPL-printserver$ php artisan serv
-Laravel development server started: http://127.0.0.1:8000
 
 ```

@@ -92,11 +92,11 @@
             <div class="content">
                 <div class="title m-b-md mb-0" style="font-size:8vw;">
                     <img class="img-fluid" src="imgs/logo.png" alt="logo"><br>
-                    xPL-printserver
+                    xPL-printserver <span class="badge badge-success" style="font-size:12px;">ready</span>
                 </div>
-                <button type="button" class="btn btn-sm btn-success mb-4" data-toggle="modal" data-target="#exampleModalLong2"><i class="fas fa-print"></i> print test</button>
-                <button type="button" class="btn btn-sm btn-success mb-4" data-toggle="modal" data-target="#exampleModalLong1"><i class="fas fa-upload"></i> upload template</button>
-                <button type="button" class="btn btn-sm btn-success mb-4" data-toggle="modal" data-target="#exampleModalLong"><i class="fas fa-list"></i> show templates</button><br>
+                <button type="button" class="btn btn-sm btn-primary mb-4" data-toggle="modal" data-target="#exampleModalLong2"><i class="fas fa-print"></i> print test</button>
+                <button type="button" class="btn btn-sm btn-primary mb-4" data-toggle="modal" data-target="#exampleModalLong1"><i class="fas fa-upload"></i> upload template</button>
+                <button type="button" class="btn btn-sm btn-primary mb-4" data-toggle="modal" data-target="#exampleModalLong"><i class="fas fa-list"></i> show templates</button><br>
                 <div class="links">
                     <a href="https://github.com/achauque/xPL-printclient" target="_blanck"><i class="fab fa-github-square"></i>xPL-printclient</a>
                     <a href="https://www.linkedin.com/in/esteban-alejandro-chauque-7a0a3b35/" target="_blanck"><i class="fab fa-linkedin"></i>Profile</a>
