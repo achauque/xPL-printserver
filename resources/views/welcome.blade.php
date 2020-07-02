@@ -191,9 +191,8 @@
                     <div class="modal-body">
                         <div class="control-group text-center" >
                             <img class="img-fluid" src="imgs/test.png" alt="test">
-                            <input class="form-control" placeholder="IP ADDRESS">
-                            <input class="form-control" placeholder="PORT">
-
+                            <input id="ip_address" class="form-control" placeholder="IP ADDRESS">
+                            <input id="port" class="form-control" placeholder="PORT">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -236,13 +235,15 @@
 
             var json_data = {
                 "template" : "test.xpl",
-                "printer" : "192.168.X.X",
-                "port" : 9100,
+                "printer" : $('#ip_address').val(),
+                "port" : $('#port').val(),
                 "parms" : [
                     "GUANACO",
                     "12345678"
                     ]
             };
+
+            console.log(json_data);
 
             $.ajax({
                 url: '/api/print',
