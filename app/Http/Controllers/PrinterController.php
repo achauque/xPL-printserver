@@ -89,4 +89,17 @@ class PrinterController extends Controller
             throw $e;
         }
     }
+
+    public function upload(Request $request) {
+        
+        if ($request->hasFile('zpl_file'))
+        {
+            $file = $request->file('zpl_file');
+            $file->move(env('PATH_TEMPLATES'), $file->getClientOriginalName() );
+            return redirect()->back()->with('success', 'upload success');
+        } else {
+            return redirect()->back()->with('error', 'upload error');;
+        }
+
+    }
 }
