@@ -103,4 +103,34 @@ class PrinterController extends Controller
         }
 
     }
+
+    public function delete(Request $request) {
+        $zpl_file = env('PATH_TEMPLATES').'/'.$request->zpl_file;
+        
+        if (!unlink($zpl_file)) {  
+            echo ("$zpl_file cannot be deleted due to an error");  
+        }  
+        else {  
+            return redirect()->back()->with('success', 'upload success');
+        }
+
+        /*        
+        if ($request->hasFile('zpl_file'))
+        {
+            $file = $request->file('zpl_file');
+            $file->move(env('PATH_TEMPLATES'), $file->getClientOriginalName() );
+            return redirect()->back()->with('success', 'upload success');
+        } else {
+            return redirect()->back()->with('error', 'upload error');;
+        }
+
+        if (!unlink($file_pointer)) {  
+            echo ("$file_pointer cannot be deleted due to an error");  
+        }  
+        else {  
+            echo ("$file_pointer has been deleted");  
+        } 
+        */ 
+
+    }
 }

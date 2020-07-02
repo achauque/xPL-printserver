@@ -129,9 +129,15 @@
                         @foreach ($b as $item)
                             @if($item != '..' && $item != '.')
                                 <tr>
-                                    <td> <button type="button" class="btn btn-sm btn-danger" @if($item == 'test.xpl') {{"disabled"}} @endif>
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                    <td> 
+
+                                        <form method="POST" action="{{ route('delete.template') }}" role="form" enctype="multipart/form-data">
+                                            @csrf
+                                            <input name="zpl_file" type="text" value="{{$item}}" hidden>
+                                            <button type="submit" class="btn btn-sm btn-danger" @if($item == 'test.xpl') {{"disabled"}} @endif>
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                     <td> <a href="{{ env('PATH_TEMPLATES', 'templates').'/'.$item }}" target="_BLANCK" type="button" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a> </td>
                                     <td> {{$item}} </td>

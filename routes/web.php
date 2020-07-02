@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::post('upload', 'PrinterController@upload')->name('upload.template');
+Route::post('delete', 'PrinterController@delete')->name('delete.template');
