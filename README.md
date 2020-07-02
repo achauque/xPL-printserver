@@ -41,6 +41,8 @@ Laravel development server started: http://127.0.0.1:8000
 ^FO40,240^BC^FD<##1>^FS
 ^XZ
 ```
+The server replaces the <strong><##n></strong> tags with the parms content from the json message
+
 
 # JSON Message
 
