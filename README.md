@@ -57,3 +57,7 @@ The server replaces the <strong><##n></strong> tags with the parms content from 
     ]
 }
 ```
+"template" : name of template file.
+"printer" : ip address device. Use 0.0.0.0 to self send.
+"port" : port number of device or xPL-printclient.
+"parms" : all parameters for replace on template.
