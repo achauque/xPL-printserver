@@ -47,7 +47,7 @@ The server replaces the <strong><##n></strong> tags with the parms content from 
 
 # JSON Message
 
-<strong>route: </strong> http://localhost:8000/api/print
+<strong>route: </strong> http://localhost:8000/api/print \
 <strong>method: </strong> POST
 
 ```js
