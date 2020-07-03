@@ -5,7 +5,7 @@
 # xPL-printserver
 
 This project is a print server for device with support xPL or compatible.\
-Print direct via socket or use interface [xPL-printclient](https://github.com/achauque/xPL-client) to send via LPT, Serie or USB
+Print direct via socket or use interface [xPL-printclient](https://github.com/achauque/xPL-printclient) to send via LPT, Serie or USB
 <p align="center"><img src="https://raw.githubusercontent.com/achauque/xPL-printserver/master/public/imgs/diagram.png" width="500"></p>
 
 # install
