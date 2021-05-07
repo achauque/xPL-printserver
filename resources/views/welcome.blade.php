@@ -98,9 +98,10 @@
                 <button type="button" class="btn btn-sm btn-primary mb-4" data-toggle="modal" data-target="#exampleModalLong1"><i class="fas fa-upload"></i> upload template</button>
                 <button type="button" class="btn btn-sm btn-primary mb-4" data-toggle="modal" data-target="#exampleModalLong"><i class="fas fa-list"></i> show templates</button><br>
                 <div class="links">
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PQVMD5AQAPM48&source=url" target="_blanck"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg"/></a>
                     <a href="https://github.com/achauque/xPL-printclient" target="_blanck"><i class="fab fa-github-square"></i>xPL-printclient</a>
                     <a href="https://www.linkedin.com/in/esteban-alejandro-chauque-7a0a3b35/" target="_blanck"><i class="fab fa-linkedin"></i>Profile</a>
-                    <a href="https://github.com/achauque?tab=repositories"><i class="fab fa-github-square"></i>Projects</a>
+                    <a href="https://github.com/achauque?tab=repositories" target="_blanck"><i class="fab fa-github-square"></i>Projects</a>
                 </div>
             </div>
 
