@@ -3,8 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        @php
+            header('Origin: http://labelary.com/');
+            header('Access-Control-Allow-Origin:*');
+            header('Access-Control-Allow-Credentials: true');
+            header('Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE');
+            header('Access-Control-Allow-Headers: Authorization, X-Custom-Header');
+        @endphp
 
-        <title>Laravel</title>
+        <title>xPL-printserver</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -15,7 +22,9 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/jquery-3.4.1.min.js') }}" ></script>
-    
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app-guanaco.js') }}" defer></script>
+
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -140,7 +149,8 @@
                                             </button>
                                         </form>
                                     </td>
-                                    <td> <a href="{{ env('PATH_TEMPLATES', 'templates').'/'.$item }}" target="_BLANCK" type="button" class="btn btn-sm btn-info"><i class="fas fa-search"></i></a> </td>
+                                    <td> <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModalLong3" onclick='img_show_labelary("{{ env('PATH_TEMPLATES', 'templates').'/'.$item }}");'><i class="fas fa-eye"></i></button> </td>
+                                    <td> <a href="{{ env('PATH_TEMPLATES', 'templates').'/'.$item }}" target="_BLANCK" type="button" class="btn btn-sm btn-info"><i class="fas fa-download"></i></a> </td>
                                     <td> {{$item}} </td>
                                 </tr>
                             @endif
@@ -210,6 +220,28 @@
             </div>
         </div>
 
+        <!-- Modal Show Templates-->
+        <div class="modal fade" id="exampleModalLong3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle3" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle3">Show Template</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="label_width" class="form-control" placeholder="width">
+                        <input id="label_height" class="form-control" placeholder="height"><br>
+                        <img src="" id="img_show_template_labelary" name="img_show_template_labelary"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="message" class="alert alert-success alert-dismissible fade show fixed-bottom w-25 p-3" role="alert" style="display:none;">
             <strong><i class="fa fa-check-circle-o text-success" aria-hidden="true"></i> Upload success</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -230,6 +262,7 @@
             @endif
 
         });
+
         function print_test(){
             console.log( "send!" );
 
@@ -270,6 +303,42 @@
                     console.log('error');
                 }
             });
+
+        }
+
+        function img_show_labelary(path_xpl){
+            console.log( "send!" );
+
+            var txt = '';
+            var xmlhttp = new XMLHttpRequest();
+            
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+                    txt = xmlhttp.responseText;
+                    console.log(txt);
+
+                    $.ajax({
+                        url: 'http://api.labelary.com/v1/printers/8dpmm/labels/2x2/0/',
+                        type: 'POST',
+                        data: txt,
+                        xhrFields:{
+                            responseType: 'blob'
+                        },
+                        success: function(response, textStatus, jqXHR){
+                            const url = window.URL || window.webkitURL;
+                            const src = url.createObjectURL(response);
+                            $("#img_show_template_labelary").attr('src', src);                  
+                        },
+                        error: function(e){
+                            console.log('error');
+                        }
+                    });
+
+                }
+            };
+            xmlhttp.open("GET", path_xpl, true);
+            xmlhttp.send();
+
 
         }
     </script>
