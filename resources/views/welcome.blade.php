@@ -225,15 +225,25 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle3">Show Template</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle3">Show Template power by <a href="http://labelary.com/" target="_BLANCK">http://labelary.com/</a></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input id="label_width" class="form-control" placeholder="width">
-                        <input id="label_height" class="form-control" placeholder="height"><br>
-                        <img src="" id="img_show_template_labelary" name="img_show_template_labelary"/>
+                        <div class="form-inline">
+                            <input id="file_redo" name="file_redo" value="" hidden>
+                            <input id="label_width" class="form-control col-sm" placeholder="width" value="2">
+                            <input id="label_height" class="form-control col-sm" placeholder="height" value="2">
+                            <select class="form-control" id="sizeUM">
+                                <option value="1">inch</option>
+                                <option value="2">cm</option>
+                                <option value="3">mm</option>
+                              </select>
+                            <button class="btn btn btn-info" onclick='img_redo_labelary();'><i class="fas fa-redo"></i></button>
+                        </div>
+                        
+                        <img src="" id="img_show_template_labelary" name="img_show_template_labelary" width="100%"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -308,7 +318,8 @@
 
         function img_show_labelary(path_xpl){
             console.log( "send!" );
-
+            $("#file_redo").val(path_xpl);
+            
             var txt = '';
             var xmlhttp = new XMLHttpRequest();
             
@@ -338,8 +349,58 @@
             };
             xmlhttp.open("GET", path_xpl, true);
             xmlhttp.send();
+        }
 
+        function img_redo_labelary(){
+            console.log( "send!" );
+            var file_redo = $("#file_redo").val();
 
+            var w = $("#label_width").val();
+            var h = $("#label_height").val();
+            var s = $("#sizeUM").val();
+            
+            console.log("size");
+            console.log(s);
+
+            if (s == 2){
+                w = w / 2.54;
+                h = h / 2.54;
+            }
+
+            if (s == 3){
+                w = (w / 10) / 2.54;
+                h = (h / 10) / 2.54;
+            }
+
+            var txt = '';
+            var xmlhttp = new XMLHttpRequest();
+            
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+                    txt = xmlhttp.responseText;
+                    console.log(txt);
+
+                    $.ajax({
+                        url: 'http://api.labelary.com/v1/printers/8dpmm/labels/' + w + 'x' + h + '/0/',
+                        type: 'POST',
+                        data: txt,
+                        xhrFields:{
+                            responseType: 'blob'
+                        },
+                        success: function(response, textStatus, jqXHR){
+                            const url = window.URL || window.webkitURL;
+                            const src = url.createObjectURL(response);
+                            $("#img_show_template_labelary").attr('src', src);                  
+                        },
+                        error: function(e){
+                            console.log('error');
+                        }
+                    });
+
+                }
+            };
+            xmlhttp.open("GET", file_redo, true);
+            xmlhttp.send();
         }
     </script>
 </html>
