@@ -150,7 +150,7 @@
                                         </form>
                                     </td>
                                     <td> <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#exampleModalLong3" onclick='img_show_labelary("{{ env('PATH_TEMPLATES', 'templates').'/'.$item }}");'><i class="fas fa-eye"></i></button> </td>
-                                    <td> <a href="{{ env('PATH_TEMPLATES', 'templates').'/'.$item }}" target="_BLANCK" type="button" class="btn btn-sm btn-info"><i class="fas fa-download"></i></a> </td>
+                                    <td> <a href="{{ env('PATH_TEMPLATES', 'templates').'/'.$item }}" target="_BLANCK" class="btn btn-sm btn-info"><i class="fas fa-download"></i></a> </td>
                                     <td> {{$item}} </td>
                                 </tr>
                             @endif
